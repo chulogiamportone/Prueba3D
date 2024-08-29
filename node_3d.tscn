@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxfk3pofdy4nt"]
+
+[ext_resource type="PackedScene" uid="uid://c75s2m6eic1vo" path="res://addons/ThirdPersonTemplate/Character/Nodes/PlayerTemplate.tscn" id="1_2ihdr"]
+[ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_m3djk"]
+[ext_resource type="Texture2D" uid="uid://cgdgcr4yqrjmu" path="res://addons/PNG/Green/texture_01.png" id="2_odcfx"]
+[ext_resource type="Texture2D" uid="uid://ckyqvix73r4ny" path="res://addons/PNG/Red/texture_01.png" id="3_gi086"]
+[ext_resource type="Texture2D" uid="uid://eunh6ojb301y" path="res://addons/PNG/Green/texture_04.png" id="4_kodx1"]
+[ext_resource type="Texture2D" uid="uid://kxpvi7agww0y" path="res://addons/PNG/Dark/texture_01.png" id="5_eilt8"]
+[ext_resource type="PackedScene" uid="uid://2hcupgaa1wwj" path="res://Enemigos/1/enemigo_1.tscn" id="7_n00hx"]
+
+[sub_resource type="Environment" id="Environment_e4n8p"]
+background_mode = 2
+background_energy_multiplier = 0.25
+sky = ExtResource("1_m3djk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uixbv"]
+albedo_texture = ExtResource("2_odcfx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0qje"]
+albedo_texture = ExtResource("3_gi086")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl1su"]
+albedo_texture = ExtResource("3_gi086")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8hld"]
+albedo_texture = ExtResource("4_kodx1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jppra"]
+albedo_texture = ExtResource("5_eilt8")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e4n8p")
+
+[node name="PlayerTemplate" parent="WorldEnvironment" instance=ExtResource("1_2ihdr")]
+transform = Transform3D(1, 0, 0, 0, 0.99983, 0.0184645, 0, -0.0184645, 0.99983, 0.0849115, 2.81201, -0.900662)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8229, 0.207731, 12.5679)
+material_override = SubResource("StandardMaterial3D_uixbv")
+use_collision = true
+size = Vector3(81.8765, 1, 62.9615)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.935265, 0, 0.353948, 0, 1, 0, -0.353948, 0, 0.935265, -9.55967, 4.34172, -12.6784)
+material_override = SubResource("StandardMaterial3D_d0qje")
+use_collision = true
+size = Vector3(23.5238, 8.71008, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.935265, 0, 0.353948, 0, 1, 0, -0.353948, 0, 0.935265, -4.54667, 3.6016, 9.30804)
+use_collision = true
+size = Vector3(34.5983, 8.71008, 1)
+material = SubResource("StandardMaterial3D_yl1su")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.935265, 0, 0.353948, 0, 1, 0, -0.353948, 0, 0.935265, 20.6555, 1.03201, -12.1347)
+use_collision = true
+size = Vector3(33.4002, 1.66629, 26.2163)
+material = SubResource("StandardMaterial3D_o8hld")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(0.734171, -0.367627, 0.570827, -0.618663, -0.015836, 0.785496, -0.27973, -0.929838, -0.239064, -47.5162, 11.6815, 6.27319)
+use_collision = true
+size = Vector3(37.3422, 3.57861, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(0.734171, -0.367627, 0.570827, -0.618663, -0.015836, 0.785496, -0.27973, -0.929838, -0.239064, -66.7753, 28.3975, 13.0387)
+use_collision = true
+size = Vector3(20.7639, 3.57861, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(0.945253, -0.306825, -0.111156, 0.114607, -0.0068081, 0.993388, -0.305553, -0.951742, 0.0287285, -56.8997, 35.3114, 21.5899)
+use_collision = true
+size = Vector3(29.7435, 21.049, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.352561, 0, 0.935791, 0, 1, 0, -0.935791, 0, -0.352561, -14.1357, 3.57889, 9.29952)
+size = Vector3(0.001, 3.14795, 8.88083)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.935265, 0, 0.353948, 0, 1, 0, -0.353948, 0, 0.935265, -25.9831, 4.6635, 7.8709)
+operation = 2
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.43087, 3.47647, -1.13805)
+material_override = SubResource("StandardMaterial3D_jppra")
+use_collision = true
+size = Vector3(48.0688, 58.7202, 26.2163)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22456, -0.20608, 0)
+operation = 2
+use_collision = true
+size = Vector3(38.2888, 7.05243, 11.0638)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.0374812, 0, -0.999298, 0, 1, 0, 0.999298, 0, 0.0374812, 4.61603, 35.1513, -1.39423)
+operation = 2
+use_collision = true
+size = Vector3(20.3533, 36.1336, 19.4141)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01085, 0.911425, -6.4515)
+operation = 2
+size = Vector3(1, 9.14786, 2.56946)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02567, 4.43154, -6.76712)
+operation = 2
+polygon = PackedVector2Array(40.2646, -18.0511, 11.4508, 0.729492, -33.4958, 21.1387, 10.1653, -20.1955)
+depth = 5.22
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.0427999, 0, 0.999085, 0, 1, 0, -0.999085, 0, -0.0427999, 11.1771, -1.08461, 6.96102)
+operation = 2
+size = Vector3(3.30798, 3.14795, 5.14111)
+
+[node name="Enemigo1" parent="." instance=ExtResource("7_n00hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.324, 37.5001, 13.7072)
+
+[node name="Enemigo2" parent="." instance=ExtResource("7_n00hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86578, 0.707727, -9.56289)
+
+[node name="Enemigo3" parent="." instance=ExtResource("7_n00hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.56041, 1.86516, -1.04788)

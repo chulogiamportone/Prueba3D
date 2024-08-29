@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2hcupgaa1wwj"]
+
+[ext_resource type="Script" path="res://Enemigos/1/Enemigo1.gd" id="1_fw264"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y2wye"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5s2p"]
+
+[node name="Enemigo1" type="CharacterBody3D"]
+script = ExtResource("1_fw264")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.25, 0)
+mesh = SubResource("CapsuleMesh_y2wye")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_w5s2p")
+
+[node name="Timer" type="Timer" parent="."]
